@@ -1,0 +1,29 @@
+.reg-form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #FFFFFF;
+    border: 1px solid #586069;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#id_username, #id_password, #id_password1, #id_password2 {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #eee;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.g-recaptcha {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

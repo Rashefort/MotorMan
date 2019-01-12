@@ -1,0 +1,63 @@
+{% extends 'motorman_base.html' %}
+{% load staticfiles %}
+
+{% block title %}Contacts{% endblock %}
+
+{% block head %}
+<script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5bc3243ad2130ba2bc39dd24d82e0ccd098064ad82f9c12f82e2bc45031c9629&amp;height=400&amp;lang=ru_RU&amp;scroll=true&amp;id=YMaps"></script>
+{% endblock %}
+
+{% block section %}
+<div class="container my-xs-0 my-sm-5" id="contacts">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-3 col-lg-4 text-center">
+            <img src="{% static 'img/contacts.png' %}" alt="">
+        </div>
+
+        <div class="col-md-9 col-lg-8 text-justify">
+            <h3 class="font-weight-bold">О нас:</h3>
+            <h5>Тут будет всякая хуйня, которую придумает Дёня для привлечения внимания юзеров, типа - мы очень рады вас видеть, проконсультировать и поцеловать в жопу. А ещё у нас есть форум, там можно будет послать всех на хуй. И всё это сделано для вас, дорогие пользователи.</h5>
+        </div>
+    </div>
+
+    <hr class="margin-15">
+
+    <div class="row">
+        <div class="col">
+            <h5 class="font-weight-bold">Адрес:</h5>
+            <p>г. Минск, ул. Лолобриджиты 221b</p><br>
+
+            <h5 class="font-weight-bold">Телефоны:</h5>
+            <p>
+                +375 (29) 000-32-23 (Velcom)<br>
+                +375 (29) 000-23-32 (МТС)<br>
+                +375 (25) 000-33-22 (life)
+            </p>
+
+            <h5 class="font-weight-bold">E-mail:</h5>
+            <p><a href="mailto:motorman@vzh-vzh.by">motorman@vzh-vzh.by</a></p>
+
+            <h5 class="font-weight-bold">Режим работы:</h5>
+            <p>
+                Понедельник и Пятница: с 9:00 до 18:00;<br>
+                Вторник - сандень;<br>
+                Среда: c 14:00 до 15:00;<br>
+                Четверг - переучет;<br>
+                Суббота, Воскресенье – выходной;
+            </p>
+
+            <h5 class="font-weight-bold">Как к нам проехать:</h5>
+            <p>
+                Мы находимся по адресу ул. Лолобриджиты 221b, что в 10 минутах ходьбы от дворца президента.<br><br>
+                К нам можно проехать от станции метро на автобусе или роликовых лыжах, потом повернуть налево и постучать в калитку. Пароль - "У вас продается славянский шкаф?", отзыв - "Шкаф продан, могу предложить никелированную кровать с тумбочкой."
+            </p>
+
+            <hr class="margin-hr">
+        </div>
+    </div>
+
+    <div id="YMaps" style="height: 450px;">
+        <h5 class="font-weight-bold">Карта:</h5>
+    </div>
+</div>
+{% endblock %}

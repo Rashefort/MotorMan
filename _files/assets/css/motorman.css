@@ -1,0 +1,159 @@
+{% load staticfiles %}
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+#scroller {
+    background: transparent url('/static/img/up.png') no-repeat left top;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+    display:none;
+}
+
+#header-date, #header-valuta {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #837f7f;
+}
+
+.red {
+    color: #ff4242;
+}
+
+.gray {
+    color: #837f7f;
+}
+
+.green {
+    color: #34ce7c;
+}
+
+i.fa {
+    display: inline-block;
+    padding: 10px;
+}
+
+.social a {
+    text-align: center;
+    width: 41px;
+    height: 41px;
+    float: right;
+    color: #cccccc;
+}
+
+.facebook a:hover {
+    background: #3b5998;
+    color: #ffffff;
+}
+
+.vk a:hover {
+    background: #5d84ae;
+    color: #ffffff;
+}
+
+.odnoklassniki a:hover {
+    background: #ff9933;
+    color: #ffffff;
+}
+
+.telegram a:hover {
+    background: #249bd7;
+    color: #ffffff;
+}
+
+hr.nomargin {
+    margin: 0;
+}
+
+.nopadding {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+a.nav-link {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+#top-footer {
+    border-top: 7px solid #000;
+    margin-bottom: 2px;
+}
+
+#bottom-footer {
+    border-top: 2px solid #000;
+    padding-top: 15px;
+}
+
+i.studio {
+    float: right;
+    padding-bottom: 15px;
+}
+
+.avatar {
+    border-radius: 5px;
+}
+
+#profile {
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid #586069;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#id_email, #id_place, #id_experience {
+    margin-bottom: 20px;
+}
+
+#id_email, #id_place, #id_experience, #id_sex {
+    width: 100%;
+    height: 30px;
+}
+
+.newsborder {
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.newstitle {
+    background: #f8f9fa;
+    padding-left: 30px;
+}
+
+figure {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+.newstext {
+    height: 128px;
+}
+
+a.onward {
+    text-decoration: underline;
+    color: #837f7f;
+    float: right;
+}
+
+a.onward:hover {
+    color: #000000;
+}
+
+.newsfooter {
+    background: #f8f9fa;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 12px;
+}

@@ -1,0 +1,42 @@
+{% extends 'motorman_base.html' %}
+{% load staticfiles %}
+
+{% block title %}Profile{% endblock %}
+
+{% block section %}
+<div class="container my-xs-0 my-sm-5" id="profile">
+    <h2 class="text-center font-weight-bold">Профиль</h2><hr><br>
+
+    <div class="row row-centered">
+        <div class="col-sm-6 col-md-8">
+            <p style="text-align:justify"><b>Граватар</b> - от англ. globally recognized avatar, глобально распознаваемый аватар — сервис, позволяющий интернет-пользователям хранить свой аватар на специальном сервере. Пользователь регистрируется на центральном сервере и сохраняет там свой аватар и адрес электронной почты. Когда он оставляет комментарий на сайте или блоге, поддерживающем Gravatar, и указывает свой адрес электронной почты, на стороне сайта вычисляется MD5-хэш от почтового адреса и отправляется на сервер Gravatar, в ответ возвращается аватар пользователя.</p>
+            <p style="float: right"><a href="https://ru.gravatar.com/">Установить граватар</a></p>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+            <form method="post" role="form">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+
+                {% for field in form %}
+                <div>
+                    {{ field.label_tag }}<br>
+                    {{ field }}<br>
+
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+
+                    {% if field.help_text %}
+                        <p><small style="color: grey">{{ field.help_text }}</small></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                <hr>
+                <button type="submit" class="btn btn-success pull-center" style="float: right">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

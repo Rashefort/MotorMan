@@ -1,0 +1,58 @@
+{% extends 'motorman_base.html' %}
+{% load staticfiles %}
+
+{% block title %}News{% endblock %}
+
+{% block head %}
+<!-- <script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script> -->
+{% endblock %}
+
+{% block section %}
+<div class="container nopadding">
+    <div class="row">
+        <div class="col-lg-9">
+            <br>
+            {% for article in articles %}
+            <div class="container newsborder">
+                <div class="row newstitle">
+                    <h3>{{ article.title }}</h3>
+                </div>
+
+                <figure>
+                    <img src="/media/{{ article.image.path }}" width="100%";>
+                </figure>
+
+                <div class="newstext dot">
+                    {{ article.text|linebreaks }}
+                </div>
+
+                <a class="onward" href="#">Перейти в новость</a><br><br>
+
+                <div class="row newsfooter">
+                    <div class="col">
+                        <img src="{% static 'img/views.png' %}" alt="">
+                        {{ article.views }}
+                        &nbsp;&nbsp;
+                        <img src="{% static 'img/comments.png' %}" alt="">
+                        {{ article.comments }}
+                    </div>
+                    <div class="col text-right">
+                        {{ article.date }}
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            <br>
+        </div>
+
+        <!-- <div class="col-lg-3">
+            <br><div id="vk_groups"></div>
+
+            <script type="text/javascript">
+                VK.Widgets.Group("vk_groups", {mode: 0, wide: 1, width: "auto", height: "400"}, 176567990);
+            </script>
+        </div> -->
+    </div>
+</div>
+{% endblock %}

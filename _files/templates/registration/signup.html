@@ -1,0 +1,57 @@
+{% extends 'motorman_base.html' %}
+{% load staticfiles %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/registration.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block section %}
+<div class="container change-form my-xs-0 my-sm-5">
+    <div class="row">
+        <div class="col-sm-2 col-md-3 col-lg-3 col-xl-4"></div>
+
+        <div class="pull-xs-4 col-sm-8 col-md-6 col-lg-6 col-xl-4 reg-form">
+            <h2 class="text-center font-weight-bold">Регистрация</h2>
+            <div class="text-center"">
+                <img class="img-responsive text-center" src="{% static 'img/carmageddon.png' %}" alt="">
+            </div>
+            <hr><br>
+
+            <form method="post" role="form">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}" />
+
+                {% for field in form %}
+                <div>
+                    {{ field.label_tag }}<br>
+                    {{ field }}<br>
+
+                    {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                <script src='https://www.google.com/recaptcha/api.js'></script>
+                <div class="row text-center">
+                    <div class="g-recaptcha" data-sitekey="6LfddYcUAAAAAOrOXGzl4u8nSJED_CAZFv0xw7Hl"></div>
+                </div>
+
+                <hr class="margin-hr">
+
+                <div class="row">
+                    <div class="col text-center">
+                        <a href="{% url 'login' %}" class="toggle nav-link reg-link">Авторизация</a>
+                    </div>
+
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-success pull-center">Войти</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
