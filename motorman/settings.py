@@ -24,7 +24,7 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6LfddYcUAAAAAKEJ03lbjXan9aZbtXwUXov6lnqB'
 SECRET_KEY = '!3vzl$(#e3l#v0*#%-)de$knax49k57y52mra-i11fojx&yewf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'rash.pythonanywhere.com',
