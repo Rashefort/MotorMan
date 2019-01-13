@@ -4,78 +4,129 @@
 {% block title %}News{% endblock %}
 
 {% block head %}
-<!-- <script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script> -->
+    <script src="https://vk.com/js/api/openapi.js?160" type="text/javascript"></script>
 {% endblock %}
 
 {% block section %}
-<div class="container nopadding">
-    <div class="row">
-        <div class="col-lg-9">
-            <br>
-            {% for article in articles %}
-            <div class="container newsborder">
-                <div class="row newstitle">
-                    <h3>{{ article.title }}</h3>
-                </div>
-
-                <figure>
-                    <img src="/media/{{ article.image.path }}" width="100%";>
-                </figure>
-
-                <div class="newstext dot">
-                    {{ article.text|linebreaks }}
-                </div>
-
-                <a class="onward" href="#">Перейти в новость</a><br><br>
-
-                <div class="row newsfooter">
-                    <div class="col">
-                        <img src="{% static 'img/views.png' %}" alt="">
-                        {{ article.views }}
-                        &nbsp;&nbsp;
-                        <img src="{% static 'img/comments.png' %}" alt="">
-                        {{ article.comments }}
+    <div class="container nopadding">
+        <div class="row">
+            <div class="col-lg-9">
+                <br>
+                {% for article in articles %}
+                <div class="container newsborder">
+                    <div class="row newstitle">
+                        <h3>{{ article.title }}</h3>
                     </div>
-                    <div class="col text-right">
-                        {{ article.date }}
+
+                    <figure>
+                        <img src="/media/{{ article.image.path }}" width="100%";>
+                    </figure>
+
+                    <div class="newstext dot">
+                        {{ article.text|linebreaks }}
+                    </div>
+
+                    <a class="onward" href="#">Перейти в новость</a><br><br>
+
+                    <div class="row newsfooter">
+                        <div class="col">
+                            <img src="{% static 'img/views.png' %}" alt="">
+                            {{ article.views }}
+                            &nbsp;&nbsp;
+                            <img src="{% static 'img/comments.png' %}" alt="">
+                            {{ article.comments }}
+                        </div>
+                        <div class="col text-right">
+                            {{ article.date }}
+                        </div>
                     </div>
                 </div>
+                <br>
+                {% endfor %}
+                <br>
             </div>
-            <br>
-            {% endfor %}
-            <br>
-        </div>
 
-        <div class="col-lg-3">
-            <br>
-            <div class="popular">
-                <div class="populars">
-                    <b>Популярное:</b>
-                </div>
-
-                <div class="popular-articles">
-                    {% for popular in populars %}
-                    <div class="popular-title">
-                        <b>{{ forloop.counter }}.</b> {{ popular.title }}
+            <div class="col-lg-3">
+                <br>
+                <div class="popular">
+                    <div class="populars">
+                        <b>Популярное:</b>
                     </div>
 
-                    <div class="popular-views">
-                        views: {{ popular.views }}
-                        {% if forloop.counter < 5 %}
-                            <hr class="upmargin">
-                        {% endif %}
+                    <div class="popular-articles">
+                        {% for popular in populars %}
+                        <div class="popular-title">
+                            <b>{{ forloop.counter }}.</b> {{ popular.title }}
+                        </div>
+
+                        <div class="popular-views">
+                            views: {{ popular.views }}
+                            {% if forloop.counter < 5 %}
+                                <hr class="upmargin">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
+
+                <br>
+                <div class="popular">
+                    <div class="populars">
+                        <b>Последнее:</b>
+                    </div>
+
+                    <div class="popular-articles">
+                        {% for last in lastnews %}
+                        <div class="popular-title">
+                            <b>{{ forloop.counter }}.</b> {{ last.title }}
+                        </div>
+
+                        <div class="popular-views">
+                            {{ last.date }}
+                            {% if forloop.counter < 5 %}
+                                <hr class="upmargin">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <br><div id="vk_groups"></div>
+                <br><div id="ok_group_widget"></div>
             </div>
         </div>
-        <!-- <div class="col-lg-3">
-            <br><div id="vk_groups"></div>
-
-            <script type="text/javascript">
-                VK.Widgets.Group("vk_groups", {mode: 0, wide: 1, width: "auto", height: "400"}, 176567990);
-            </script>
-        </div> -->
     </div>
-</div>
+{% endblock %}
+
+{% block footer %}
+    <script type="text/javascript">
+        VK.Widgets.Group("vk_groups", {mode: 0, wide: 1, width: "auto", height: "400"}, 176567990);
+    </script>
+
+    <script type="text/javascript">
+        !function (d, id, did, st) {
+            var js = d.createElement("script");
+            js.src = "https://connect.ok.ru/connect.js";
+            js.onload = js.onreadystatechange = function () {
+                if (!this.readyState || this.readyState == "loaded" || this.readyState == "complete") {
+                    if (!this.executed) {
+                        this.executed = true;
+                        setTimeout(function () {
+                            OK.CONNECT.insertGroupWidget(id,did,st);
+                        }, 0);
+                    }
+                }
+            };
+            d.documentElement.appendChild(js);
+        }(document,"ok_group_widget","54781614882885",'{"width":263,"height":400}');
+    </script>
+
+    <script type="text/javascript">
+        var text = document.getElementsByClassName("newstext");
+
+        for(var i=0; i<text.length; i++) {
+            text[i].style.color = "#000000";
+        }
+    </script>
+
 {% endblock %}

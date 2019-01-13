@@ -139,6 +139,7 @@ p {
 
 .newstext {
     height: 128px;
+    color: #ffffff;
 }
 
 a.onward {
@@ -185,4 +186,12 @@ a.onward:hover {
 
 .upmargin {
     margin: 7px 0px 0px;
+}
+
+#vk_groups, #vk_groups iframe {
+     width: 100% !important;
+}
+
+#__okGroup0{
+    width: 100% !important;
 }

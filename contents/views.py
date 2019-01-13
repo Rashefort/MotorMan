@@ -49,10 +49,15 @@ def profile(request):
 
 
 def articles(request):
+    articles = Article.objects.order_by('-date')
+    populars = Article.objects.order_by('-date').order_by('-views')[:5]
+    lastnews = articles[:5]
+
     data = {
         'avatar': gravatar(request),
-        'articles': Article.objects.order_by('-date'),
-        'populars': Article.objects.order_by('-date').order_by('-views')[:5],
+        'articles': articles,
+        'populars': populars,
+        'lastnews': lastnews,
     }
 
     return render(request, 'motorman_news.html', data)
