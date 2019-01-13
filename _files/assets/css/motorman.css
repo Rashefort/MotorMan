@@ -157,3 +157,32 @@ a.onward:hover {
     padding-bottom: 5px;
     font-size: 12px;
 }
+
+.popular {
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.populars {
+    background-color: #D4EE9F;
+    padding: 5px;
+    text-align: center;
+}
+
+.popular-articles {
+    padding: 7px 15px;
+    background-color: #f8f9fa;
+    font-size: 14px;
+}
+
+.popular-title {
+    padding-top: 7px;
+}
+
+.popular-views {
+    padding-bottom: 7px;
+    text-align: right;
+}
+
+.upmargin {
+    margin: 7px 0px 0px;
+}

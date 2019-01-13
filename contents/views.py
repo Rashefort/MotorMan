@@ -52,6 +52,7 @@ def articles(request):
     data = {
         'avatar': gravatar(request),
         'articles': Article.objects.order_by('-date'),
+        'populars': Article.objects.order_by('-date').order_by('-views')[:5],
     }
 
     return render(request, 'motorman_news.html', data)

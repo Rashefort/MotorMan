@@ -46,6 +46,29 @@
             <br>
         </div>
 
+        <div class="col-lg-3">
+            <br>
+            <div class="popular">
+                <div class="populars">
+                    <b>Популярное:</b>
+                </div>
+
+                <div class="popular-articles">
+                    {% for popular in populars %}
+                    <div class="popular-title">
+                        <b>{{ forloop.counter }}.</b> {{ popular.title }}
+                    </div>
+
+                    <div class="popular-views">
+                        views: {{ popular.views }}
+                        {% if forloop.counter < 5 %}
+                            <hr class="upmargin">
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
         <!-- <div class="col-lg-3">
             <br><div id="vk_groups"></div>
 
