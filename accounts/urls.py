@@ -2,8 +2,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.urls import path
 
-from .decorators import check_recaptcha
-from . import views
+from accounts.decorators import check_recaptcha
+from accounts import views
 
 
 urlpatterns = [

@@ -1,7 +1,6 @@
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
-
-from .forms import ProfileForm
 from .models import Article
 
 from hashlib import md5
@@ -13,39 +12,6 @@ def gravatar(request, size=40):
         return f'{md5(request.user.email.encode()).hexdigest()}?s={size}&d=mp'
     else:
         return None
-
-
-def profile(request):
-    if request.method == 'POST':
-        form = ProfileForm(request.POST)
-
-        if form.is_valid():
-            request.user.email = form.cleaned_data.get('email')
-            request.user.first_name = form.cleaned_data.get('place')
-
-            experience = form.cleaned_data.get('experience')
-            sex = form.cleaned_data.get('sex')
-            request.user.last_name = f'{experience} {sex}'
-
-            request.user.save()
-
-            return redirect('articles')
-
-    else:
-        try:
-            email = request.user.email
-            place = request.user.first_name
-            experience, sex = request.user.last_name.split()
-
-        except ValueError:
-            sex = experience = '1'
-
-        finally:
-            data = {'email': email, 'place': place, 'sex': sex, 'experience': experience}
-
-        form = ProfileForm(initial=data)
-
-    return render(request, 'motorman_profile.html', {'avatar': gravatar(request), 'form': form})
 
 
 def articles(request):
@@ -61,6 +27,41 @@ def articles(request):
     }
 
     return render(request, 'motorman_news.html', data)
+
+
+def detail(request, pk):
+    article = get_object_or_404(Article, pk=pk)
+
+    visits = request.session.get('visits', [])
+    if pk not in visits:
+        visits.append(pk)
+        request.session['visits'] = visits
+        article.views += 1
+        article.save()
+
+    # request.session['visits'] = visits + 1
+    # del request.session['visits']
+
+    print('visits = ', visits)
+
+    # if pk not in visits:
+    #     request.session['visits'] = visits.append(pk)
+    #     article.views += 1
+    #     article.save()
+
+    # request.session.modified = True
+
+    populars = Article.objects.order_by('-date').order_by('-views')[:5]
+    lastnews = Article.objects.order_by('-date')[:5]
+
+    data = {
+        'avatar': gravatar(request),
+        'article': article,
+        'populars': populars,
+        'lastnews': lastnews,
+    }
+
+    return render(request, 'motorman_detail.html', data)
 
 
 def contacts(request):

@@ -19,8 +19,8 @@ class RegisterView(FormView):
             password = form.cleaned_data.get('password1')
 
             user = authenticate(username=username, password=password)
-            login(request, user)
+            login(self.request, user)
 
-            return redirect('news')
+            return redirect('articles')
 
         return render(self.request, 'signup.html', self.get_context_data())

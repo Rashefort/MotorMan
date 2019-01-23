@@ -1,0 +1,50 @@
+<div class="col-lg-3">
+    <br>
+    <div class="popular">
+        <div class="populars">
+            <b>Популярное:</b>
+        </div>
+
+        <div class="popular-articles">
+            {% for popular in populars %}
+            <div class="popular-title">
+                <b>{{ forloop.counter }}. </b>
+                <a class="s-link" href="{% url 'detail' pk=popular.pk %}">{{ popular.title }}</a>
+            </div>
+
+            <div class="popular-views">
+                views: {{ popular.views }}
+                {% if forloop.counter < 5 %}
+                    <hr class="upmargin">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br>
+    <div class="popular">
+        <div class="populars">
+            <b>Последнее:</b>
+        </div>
+
+        <div class="popular-articles">
+            {% for last in lastnews %}
+            <div class="popular-title">
+                <b>{{ forloop.counter }}. </b>
+                <a class="s-link" href="{% url 'detail' pk=last.pk %}">{{ last.title }}</a>
+            </div>
+
+            <div class="popular-views">
+                {{ last.date }}
+                {% if forloop.counter < 5 %}
+                    <hr class="upmargin">
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <br><div id="vk_groups"></div>
+    <br><div id="ok_group_widget"></div>
+</div>

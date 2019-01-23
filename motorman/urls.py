@@ -26,6 +26,7 @@ admin.site.index_title = 'Администрирование'
 urlpatterns = [
     path('', include('contents.urls')),
     path('accounts/', include('accounts.urls')),
+    path('profile/', include('userprofile.urls')),
     path('admin/', admin.site.urls),
 ]
 

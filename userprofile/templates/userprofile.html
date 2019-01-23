@@ -1,0 +1,61 @@
+{% extends 'motorman_base.html' %}
+{% load staticfiles %}
+
+{% block title %}Profile{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/userprofile.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block section %}
+<div id="profile" class="container my-xs-0 my-sm-5">
+    <h2 class="text-center font-weight-bold">Профиль</h2><hr><br>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-lg-4">
+                {{ user_form.first_name.label_tag }}
+                {{ user_form.first_name }}<br>
+                {{ user_form.last_name.label_tag }}
+                {{ user_form.last_name }}<br>
+                {{ profile_form.birthday.label_tag }}
+                {{ profile_form.birthday }}<br>
+                {{ user_form.email.label_tag }}
+                {{ user_form.email }}
+            </div>
+
+            <div class="col-lg-4">
+                {{ profile_form.place.label_tag }}
+                {{ profile_form.place }}<br>
+                {{ profile_form.sex.label_tag }}
+                {{ profile_form.sex }}<br>
+                {{ profile_form.experience.label_tag }}
+                {{ profile_form.experience }}<br><br>
+                <div id="gravatar">
+                    <a href="https://ru.gravatar.com/"><h4>Установить граватар</h4></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                {{ profile_form.about.label_tag }}<br>
+                {{ profile_form.about }}<br><br>
+            </div>
+        </div>
+
+        <div class="row justify-content-end rbutton">
+            <button class="btn btn-success" type="submit">Сохранить</button>
+        </div>
+
+
+        {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+        {% endfor %}
+
+        {% if field.help_text %}
+        <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+    </form>
+</div>
+{% endblock %} 6539635

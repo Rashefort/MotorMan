@@ -21,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfddYcUAAAAAKEJ03lbjXan9aZbtXwUXov6lnqB'
-SECRET_KEY = '!3vzl$(#e3l#v0*#%-)de$knax49k57y52mra-i11fojx&yewf'
+SECRET_KEY = 'm0dx_(2l7ua5t1%=xxakb9ce!)g@ful-h_g^e^)sgwq(@+kv^y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'rash.pythonanywhere.com',
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'userprofile.apps.UserprofileConfig',
     'accounts.apps.AccountsConfig',
     'contents.apps.ContentsConfig',
 ]
@@ -67,7 +68,6 @@ TEMPLATES = [
 
         'DIRS': [
             os.path.join(BASE_DIR, '_files', 'templates'),
-            os.path.join(BASE_DIR, '_files', 'templates', 'registration'),
         ],
 
         'APP_DIRS': True,
@@ -77,7 +77,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
             ],
         },
     },
